@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Online Student Admission Form 2026-27 | Apex University</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <!-- Ambient Background -->
+  <div class="bg-grid"></div>
+  <div class="glow-orb orb-1"></div>
+  <div class="glow-orb orb-2"></div>
+
+  <div class="container">
+    <!-- Top Bar -->
+    <header class="form-header">
+      <div class="brand-badge">
+        <span class="badge-icon">🎓</span>
+        <span>Apex University • Admissions 2026-27</span>
+      </div>
+      <h1>Online Student Admission Form</h1>
+      <p class="subtitle">Fill in the required information below to register and submit your application.</p>
+    </header>
+
+    <!-- Main Admission Form Container -->
+    <div class="form-wrapper">
+      <div class="form-card">
+        <div class="form-top-actions">
+          <div class="session-info">
+            <span class="pulse-dot"></span>
+            <span>Admissions Open for Session 2026-27</span>
+          </div>
+          <button type="button" id="btn-autofill" class="btn-demo">
+            ⚡ Auto-Fill Sample Data
+          </button>
+        </div>
+
+        <form id="admission-form">
+          <!-- Section 1: Personal Details -->
+          <div class="form-section">
+            <h3 class="section-title">
+              <span class="step-num">1</span>
+              <span>Personal Information</span>
+            </h3>
+
+            <div class="form-row">
+              <div class="form-group full-width">
+                <label for="student_name">Full Name <span class="req">*</span></label>
+                <input type="text" id="student_name" name="student_name" placeholder="Enter student's full name" required>
+              </div>
+            </div>
+
+            <div class="form-row two-cols">
+              <div class="form-group">
+                <label for="email">Email Address <span class="req">*</span></label>
+                <input type="email" id="email" name="email" placeholder="student@example.com" required>
+              </div>
+
+              <div class="form-group">
+                <label for="phone">Mobile Phone Number <span class="req">*</span></label>
+                <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210" required>
+              </div>
+            </div>
+
+            <div class="form-row two-cols">
+              <div class="form-group">
+                <label for="dob">Date of Birth</label>
+                <input type="date" id="dob" name="dob">
+              </div>
+
+              <div class="form-group">
+                <label for="gender">Gender</label>
+                <select id="gender" name="gender">
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 2: Academic Details -->
+          <div class="form-section">
+            <h3 class="section-title">
+              <span class="step-num">2</span>
+              <span>Course & Academic Details</span>
+            </h3>
+
+            <div class="form-row">
+              <div class="form-group full-width">
+                <label for="course">Course / Degree Applying For <span class="req">*</span></label>
+                <select id="course" name="course" required>
+                  <option value="" disabled selected>-- Select a Degree / Course --</option>
+                  <option value="B.Tech - Computer Science">B.Tech - Computer Science & Engineering</option>
+                  <option value="B.Tech - Artificial Intelligence & ML">B.Tech - AI & Machine Learning</option>
+                  <option value="B.Tech - Data Science">B.Tech - Data Science</option>
+                  <option value="MCA - Master of Computer Applications">MCA - Master of Computer Applications</option>
+                  <option value="MBA - Master of Business Administration">MBA - Master of Business Administration</option>
+                  <option value="BCA - Bachelor of Computer Applications">BCA - Bachelor of Computer Applications</option>
+                  <option value="BBA - Bachelor of Business Administration">BBA - Bachelor of Business Administration</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-row two-cols">
+              <div class="form-group">
+                <label for="qualification">Previous Qualification <span class="req">*</span></label>
+                <select id="qualification" name="qualification" required>
+                  <option value="12th Science">12th Science (PCM / PCB)</option>
+                  <option value="12th Commerce">12th Commerce</option>
+                  <option value="12th Arts">12th Arts</option>
+                  <option value="Diploma in Engg">Diploma in Engineering</option>
+                  <option value="BCA / B.Sc CS">BCA / B.Sc CS</option>
+                  <option value="Bachelor Degree (Any)">Bachelor's Degree (Any)</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="percentage">Percentage / CGPA Obtained <span class="req">*</span></label>
+                <input type="text" id="percentage" name="percentage" placeholder="e.g. 89.5% or 9.0 CGPA" required>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 3: Residential Details -->
+          <div class="form-section">
+            <h3 class="section-title">
+              <span class="step-num">3</span>
+              <span>Address & Communication</span>
+            </h3>
+
+            <div class="form-row two-cols">
+              <div class="form-group">
+                <label for="city">City / District</label>
+                <input type="text" id="city" name="city" placeholder="e.g. Mumbai">
+              </div>
+
+              <div class="form-group">
+                <label for="state">State</label>
+                <input type="text" id="state" name="state" placeholder="e.g. Maharashtra">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group full-width">
+                <label for="address">Residential Address</label>
+                <textarea id="address" name="address" rows="2" placeholder="House/Flat No, Street, Landmark, Pincode"></textarea>
+              </div>
+            </div>
+          </div>
+
+          <!-- Actions -->
+          <div class="form-actions">
+            <button type="reset" class="btn btn-secondary">Clear Form</button>
+            <button type="submit" class="btn btn-primary" id="btn-submit">
+              <span>Submit Admission Form</span>
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Quick Database Records Viewer Button & Modal trigger -->
+      <div class="records-footer-bar">
+        <button type="button" id="btn-view-database" class="btn-link">
+          🗄️ View Submitted Database Records (<span id="count-db">0</span>)
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Success Confirmation Modal -->
+  <div class="modal-overlay hidden" id="success-modal">
+    <div class="modal-card success-card">
+      <div class="success-icon">🎉</div>
+      <h2>Application Submitted Successfully!</h2>
+      <p class="modal-sub">Your admission form has been saved to the database.</p>
+
+      <div class="receipt-box" id="submission-receipt">
+        <!-- Injected via JS -->
+      </div>
+
+      <div class="modal-btn-row">
+        <button class="btn btn-secondary" id="btn-submit-another">Submit Another Form</button>
+        <button class="btn btn-primary" id="btn-view-db-from-modal">View in Database</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Database Records Drawer / Modal -->
+  <div class="modal-overlay hidden" id="records-modal">
+    <div class="modal-card wide-card">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <span class="icon">🗄️</span>
+          <div>
+            <h3>Database Submissions</h3>
+            <p class="modal-subtitle">All student records stored in PostgreSQL Database</p>
+          </div>
+        </div>
+        <button class="modal-close" id="btn-close-records">&times;</button>
+      </div>
+
+      <div class="modal-toolbar">
+        <input type="text" id="input-filter-search" placeholder="Search student name, email, course...">
+      </div>
+
+      <div class="modal-body db-records-list" id="modal-db-records">
+        <!-- Injected via JS -->
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-secondary" id="btn-close-records-btn">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

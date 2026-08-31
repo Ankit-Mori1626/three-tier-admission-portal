@@ -1,0 +1,21 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# Environment variables
+.env
+.env.local
+
+# Logs & temporary files
+*.log
+npm-debug.log*
+
+# Database & Volume storage
+pgdata/
+*.sql.tar.gz
+
+# IDE & OS files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

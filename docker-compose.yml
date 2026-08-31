@@ -1,0 +1,83 @@
+version: '3.8'
+
+services:
+  # ========================================================
+  # TIER 1: PRESENTATION LAYER (Public Subnet Simulation)
+  # ========================================================
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: tier1-frontend
+    ports:
+      - "8080:80"
+    networks:
+      - public-tier1-net
+      - app-tier2-net
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+  # ========================================================
+  # TIER 2: APPLICATION LAYER (Private App Subnet Simulation)
+  # ========================================================
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: tier2-backend
+    environment:
+      - PORT=5000
+      - NODE_ENV=production
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_USER=postgres
+      - DB_PASSWORD=aws_vpc_secure_pass_123
+      - DB_NAME=threetierdb
+      - SERVER_IP=10.0.10.45
+      - AWS_REGION=ap-south-1
+    networks:
+      - app-tier2-net
+      - data-tier3-net
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+
+  # ========================================================
+  # TIER 3: DATA LAYER (Isolated DB Subnet Simulation)
+  # Notice: Only in 'data-tier3-net', NOT accessible from public!
+  # ========================================================
+  db:
+    image: postgres:15-alpine
+    container_name: tier3-isolated-db
+    environment:
+      - POSTGRES_DB=threetierdb
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=aws_vpc_secure_pass_123
+    volumes:
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - data-tier3-net
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d threetierdb"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+# ========================================================
+# ISOLATED 3-TIER NETWORKS (Simulating AWS VPC Subnets)
+# ========================================================
+networks:
+  public-tier1-net:
+    driver: bridge
+  app-tier2-net:
+    driver: bridge
+  data-tier3-net:
+    driver: bridge
+    # Isolated network simulating private DB subnet with no external route
+
+volumes:
+  pgdata:
